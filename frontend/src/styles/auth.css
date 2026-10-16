@@ -1,0 +1,59 @@
+/* =========================================================
+   Auth: dark theater panel + warm-white editorial form
+   ========================================================= */
+
+.auth { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: 100vh; min-height: 100dvh; background: var(--bg); }
+
+.auth-stage {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: grid; grid-template-rows: auto 1fr auto; gap: var(--sp-6);
+  padding: clamp(var(--sp-5), 4vw, var(--sp-7));
+  border-right: 1px solid var(--line);
+}
+.auth-stage-light { position: absolute; inset: 0; z-index: -1; }
+.auth-stage-quote { align-self: center; display: grid; gap: var(--sp-4); max-width: 520px; }
+.auth-quote { font-size: clamp(2.2rem, 1.4rem + 2.6vw, 3.8rem); line-height: 1.05; color: var(--warm-white); }
+
+/* "Admit one": a paper ticket with a tear line */
+.admit {
+  --stub: 128px; --notch: 12px;
+  display: grid; grid-template-columns: minmax(0, 1fr) var(--stub);
+  width: min(460px, 100%); border-radius: var(--r-2); overflow: hidden;
+  background: var(--paper); color: var(--navy);
+  transform: rotate(-3deg); transform-origin: left bottom;
+  filter: drop-shadow(0 30px 40px rgb(var(--deep-rgb) / 0.7));
+  -webkit-mask:
+    radial-gradient(circle var(--notch) at calc(100% - var(--stub)) 0, transparent 98%, var(--navy) 100%) top / 100% 51% no-repeat,
+    radial-gradient(circle var(--notch) at calc(100% - var(--stub)) 100%, transparent 98%, var(--navy) 100%) bottom / 100% 51% no-repeat;
+  mask:
+    radial-gradient(circle var(--notch) at calc(100% - var(--stub)) 0, transparent 98%, var(--navy) 100%) top / 100% 51% no-repeat,
+    radial-gradient(circle var(--notch) at calc(100% - var(--stub)) 100%, transparent 98%, var(--navy) 100%) bottom / 100% 51% no-repeat;
+}
+.admit .caption { color: var(--slate-700); }
+.admit-main { display: grid; gap: 4px; padding: 20px 24px; }
+.admit-title { font-family: var(--font-display); font-weight: 600; font-size: 1.9rem; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase; }
+.admit-sub { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--copper-700); letter-spacing: 0.08em; }
+.admit-stub { position: relative; display: grid; align-content: center; justify-items: center; gap: 4px; background: var(--paper-2); }
+.admit-stub::before { content: ""; position: absolute; left: -1px; top: 14px; bottom: 14px; border-left: 2px dashed rgb(var(--navy-rgb) / 0.25); }
+.admit-code { font-family: var(--font-mono); font-weight: 600; font-size: 1.1rem; letter-spacing: 0.14em; color: var(--copper-700); }
+
+.auth-main {
+  display: grid; place-items: center; padding: clamp(var(--sp-5), 4vw, var(--sp-8)) clamp(var(--sp-4), 4vw, var(--sp-7));
+  background: radial-gradient(60% 50% at 50% 30%, rgb(var(--copper-rgb) / 0.08), transparent 70%);
+}
+.auth-mobile-brand { display: none; }
+.auth-card { width: min(460px, 100%); display: grid; gap: var(--sp-4); padding: clamp(var(--sp-5), 4vw, var(--sp-7)); border-radius: var(--r-4); }
+.auth-card .display-2 { color: var(--navy); }
+.auth-form { display: grid; gap: var(--sp-4); margin-top: var(--sp-2); }
+.auth-form .btn { margin-top: var(--sp-2); }
+.paper .input-wrap .icon-btn { color: var(--slate-700); }
+.paper .input-wrap .icon-btn:hover { background: rgb(var(--navy-rgb) / 0.06); border-color: transparent; color: var(--navy); }
+.auth-note { font-size: var(--fs-xs); color: var(--slate-700); }
+.auth-switch { font-size: var(--fs-sm); color: var(--slate-700); }
+
+@media (max-width: 960px) {
+  .auth { grid-template-columns: 1fr; }
+  .auth-stage { display: none; }
+  .auth-main { place-items: start center; gap: var(--sp-6); }
+  .auth-mobile-brand { display: block; justify-self: start; }
+}

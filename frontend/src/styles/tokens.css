@@ -1,0 +1,145 @@
+/* =========================================================
+   Couchline — design tokens
+   A private theater at night: velvet navy, warm copper light.
+   Every colour in the app comes from here. No hex values elsewhere.
+   ========================================================= */
+
+:root {
+  /* ---- The palette: only these five colours ---- */
+  --navy: #18202F;        /* Midnight Navy */
+  --slate: #68748A;       /* Slate Blue */
+  --mist: #DCE1E6;        /* Mist Gray */
+  --warm-white: #FAF7F2;  /* Warm White */
+  --copper: #B8734F;      /* Copper Accent */
+
+  /* ---- Tints and shades, all mixed from the palette ----
+     Contrast is noted against the surface they are meant for. */
+  --navy-1000: #0A0D14;
+  --navy-950: #0E131C;
+  --navy-900: #121823;
+  --navy-850: #151C29;
+  --navy-750: #202836;
+  --navy-700: #262D3B;
+  --navy-600: #2F3642;
+  --slate-200: #BFC6CF;
+  --slate-300: #A2AAB8;   /* small muted text on navy: 6.3–8.3:1 */
+  --slate-400: #8B95A6;   /* placeholders / large text only */
+  --slate-700: #545F73;   /* muted text on paper: 5.7:1 */
+  --copper-200: #DCBCA9;  /* copper text on the deepest navy: 10.5:1 */
+  --copper-300: #CFA188;  /* copper text on navy surfaces: 6.4:1 */
+  --copper-400: #C58D70;
+  --copper-600: #9C6243;
+  --copper-700: #8A563B;  /* copper text on paper: 5.7:1 */
+  --ink: #0F141D;         /* text on copper: 4.9–6.5:1 */
+  --paper: var(--warm-white);
+  --paper-2: #F1F0EE;
+  --paper-3: #E8EAEB;
+
+  /* RGB channels, so transparent versions stay tied to the palette */
+  --copper-rgb: 184 115 79;
+  --ww-rgb: 250 247 242;
+  --navy-rgb: 24 32 47;
+  --deep-rgb: 10 13 20;
+  --slate-rgb: 104 116 138;
+
+  /* ---- Semantic roles ---- */
+  --bg: var(--navy-900);
+  --bg-deep: var(--navy-950);
+  --bg-raised: var(--navy);
+  --surface: var(--navy-750);
+  --surface-2: var(--navy-700);
+  --surface-3: var(--navy-600);
+  --line: rgb(var(--ww-rgb) / 0.08);          /* hairlines */
+  --line-strong: rgb(var(--ww-rgb) / 0.12);
+  --line-input: var(--slate);                  /* form edges: 3.8:1 */
+  --text: var(--warm-white);
+  --text-2: var(--mist);
+  --muted: var(--slate-300);
+  --faint: var(--slate-400);
+
+  /* Copper: the light in the dark */
+  --accent: var(--copper);
+  --accent-hover: var(--copper-400);
+  --accent-ink: var(--ink);
+  --accent-text: var(--copper-300);
+  --accent-soft: rgb(var(--copper-rgb) / 0.14);
+  --accent-soft-strong: rgb(var(--copper-rgb) / 0.26);
+  --slate-soft: rgb(var(--slate-rgb) / 0.18);
+  --brass: linear-gradient(145deg, var(--copper-200) 0%, var(--copper) 46%, var(--copper-700) 100%);
+  --brass-line: linear-gradient(90deg, transparent, rgb(var(--copper-rgb) / 0.75) 50%, transparent);
+
+  /* ---- Type ---- */
+  --font-display: "Unbounded", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Cormorant Garamond", "Cormorant", Georgia, serif;
+  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --fs-hero: clamp(2.6rem, 1rem + 6.6vw, 7.5rem);
+  --fs-d1: clamp(2.1rem, 1.3rem + 3.4vw, 4.5rem);
+  --fs-d2: clamp(1.6rem, 1.15rem + 1.9vw, 2.9rem);
+  --fs-d3: clamp(1.15rem, 1rem + 0.7vw, 1.65rem);
+  --fs-lede: clamp(1.02rem, 0.95rem + 0.3vw, 1.2rem);
+  --fs-body: 1rem;
+  --fs-sm: 0.875rem;
+  --fs-xs: 0.75rem;
+  --fs-caption: 0.6875rem;
+  --tracking-display: -0.025em;
+  --tracking-caption: 0.22em;
+
+  /* ---- Space (4-based scale) ---- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 96px;
+  --sp-10: 128px;
+
+  /* ---- Shape: large and soft ---- */
+  --r-1: 12px;
+  --r-2: 20px;
+  --r-3: 28px;
+  --r-4: 36px;
+  --r-pill: 999px;
+
+  /* ---- Depth: layered shadows + inner highlight ---- */
+  --highlight: inset 0 1px 0 rgb(var(--ww-rgb) / 0.06);
+  --shadow-1: 0 1px 2px rgb(var(--deep-rgb) / 0.5), 0 6px 16px -6px rgb(var(--deep-rgb) / 0.55);
+  --shadow-2: 0 2px 4px rgb(var(--deep-rgb) / 0.4), 0 14px 32px -10px rgb(var(--deep-rgb) / 0.7), 0 36px 72px -28px rgb(var(--deep-rgb) / 0.65);
+  --shadow-3: 0 4px 10px rgb(var(--deep-rgb) / 0.45), 0 28px 60px -14px rgb(var(--deep-rgb) / 0.8), 0 70px 140px -50px rgb(var(--deep-rgb) / 0.75);
+  --glow: 0 0 0 1px rgb(var(--copper-rgb) / 0.5), 0 10px 32px -8px rgb(var(--copper-rgb) / 0.55);
+  --glow-soft: 0 0 36px -8px rgb(var(--copper-rgb) / 0.5);
+  --ring: 0 0 0 3px rgb(var(--copper-rgb) / 0.4);
+
+  /* ---- Motion: slow and confident ---- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+  --dur-1: 160ms;
+  --dur-2: 280ms;
+  --dur-3: 480ms;
+  --dur-4: 900ms;
+
+  /* ---- Layers ---- */
+  --z-nav: 40;
+  --z-modal: 80;
+  --z-atmos: 90;
+  --z-toast: 100;
+  --z-curtain: 120;
+
+  /* ---- Older names still used by screens not yet restyled ---- */
+  --r-sm: var(--r-1);
+  --r-md: var(--r-1);
+  --r-lg: var(--r-2);
+  --r-xl: var(--r-3);
+  --shadow: var(--shadow-2);
+  --shadow-sm: var(--shadow-1);
+  --dur-fast: var(--dur-1);
+  --dur: var(--dur-2);
+  --dur-slow: var(--dur-3);
+  --nav-h: 68px;
+
+  color-scheme: dark;
+}

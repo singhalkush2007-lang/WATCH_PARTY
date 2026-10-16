@@ -1,0 +1,93 @@
+/* =========================================================
+   Poster art: abstract film artwork drawn only with palette
+   gradients (no images). Used on the billboard and Discover.
+   ========================================================= */
+
+.art {
+  position: absolute; inset: 0; overflow: hidden; display: block;
+  background-color: var(--navy-950);
+  transition: transform 1.2s var(--ease-out);
+}
+.art::before, .art::after { content: ""; position: absolute; pointer-events: none; }
+
+/* 1 · Interstellar: a ringed planet over a field of stars */
+.art-1 {
+  background:
+    radial-gradient(circle at 64% 40%, var(--slate-200) 0, var(--slate) 15%, var(--navy-700) 22%, transparent 22.5%),
+    radial-gradient(circle at 1px 1px, rgb(var(--ww-rgb) / 0.55) 1px, transparent 1.6px) 0 0 / 47px 53px,
+    radial-gradient(circle at 1px 1px, rgb(var(--ww-rgb) / 0.3) 1px, transparent 1.6px) 21px 13px / 71px 61px,
+    radial-gradient(90% 60% at 50% 110%, rgb(var(--copper-rgb) / 0.35), transparent 65%),
+    linear-gradient(180deg, var(--navy-1000), var(--navy) 80%);
+}
+.art-1::before {
+  left: 33%; top: 33%; width: 62%; height: 15%;
+  border-radius: 50%; border: 2px solid rgb(var(--copper-rgb) / 0.9);
+  box-shadow: 0 0 22px rgb(var(--copper-rgb) / 0.55), inset 0 0 14px rgb(var(--copper-rgb) / 0.4);
+  transform: rotate(-14deg);
+}
+
+/* 2 · Arrival: a dark shell hanging in low mist */
+.art-2 {
+  background:
+    linear-gradient(180deg, transparent 58%, rgb(var(--ww-rgb) / 0.35) 72%, transparent 88%),
+    linear-gradient(180deg, var(--slate-200), var(--slate) 55%, var(--navy) 100%);
+}
+.art-2::before {
+  left: 36%; top: 12%; width: 28%; height: 58%;
+  border-radius: 50%; background: linear-gradient(90deg, var(--navy-1000), var(--navy) 60%, var(--navy-700));
+  box-shadow: 0 30px 60px -10px rgb(var(--deep-rgb) / 0.6);
+  transform: rotate(8deg);
+}
+.art-2::after { left: 0; right: 0; bottom: 0; height: 28%; background: linear-gradient(180deg, transparent, rgb(var(--navy-rgb) / 0.95)); }
+
+/* 3 · The Martian: copper dunes under a pale sun */
+.art-3 {
+  background:
+    radial-gradient(circle at 30% 30%, var(--paper) 0 6%, rgb(var(--ww-rgb) / 0.3) 8%, transparent 16%),
+    linear-gradient(180deg, var(--copper-200), var(--copper) 55%, var(--copper-700));
+}
+.art-3::before {
+  left: -20%; right: -20%; bottom: 18%; height: 40%;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(180deg, var(--copper-600), var(--copper-700));
+}
+.art-3::after {
+  left: -10%; right: -40%; bottom: -8%; height: 40%;
+  border-radius: 60% 40% 0 0;
+  background: linear-gradient(180deg, var(--copper-700), var(--navy));
+}
+
+/* 4 · Spirited Away: lanterns drifting over dusk water */
+.art-4 {
+  background:
+    radial-gradient(circle at 50% 50%, var(--copper-200) 0 2px, rgb(var(--copper-rgb) / 0.5) 4px, transparent 12px) 0 0 / 64px 58px,
+    radial-gradient(circle at 50% 50%, var(--copper-300) 0 1.5px, rgb(var(--copper-rgb) / 0.4) 3px, transparent 9px) 30px 24px / 90px 76px,
+    linear-gradient(180deg, var(--navy-1000) 0%, var(--navy-700) 55%, var(--slate) 100%);
+}
+.art-4::after {
+  left: 0; right: 0; bottom: 0; height: 32%;
+  background:
+    repeating-linear-gradient(180deg, rgb(var(--copper-rgb) / 0.18) 0 2px, transparent 2px 9px),
+    linear-gradient(180deg, rgb(var(--navy-rgb) / 0.4), var(--navy-950));
+}
+
+/* 5 · Get Out: hypnotic rings */
+.art-5 {
+  background:
+    radial-gradient(circle at 50% 42%, var(--copper) 0 3%, transparent 3.5%),
+    repeating-radial-gradient(circle at 50% 42%, rgb(var(--ww-rgb) / 0.12) 0 1px, transparent 1px 16px),
+    radial-gradient(circle at 50% 42%, rgb(var(--copper-rgb) / 0.25), transparent 55%),
+    var(--navy-1000);
+}
+
+/* 6 · 3 Idiots: a bold sun on warm paper */
+.art-6 {
+  background:
+    radial-gradient(circle at 70% 34%, var(--copper) 0 18%, transparent 18.5%),
+    repeating-conic-gradient(from 0deg at 70% 34%, rgb(var(--copper-rgb) / 0.18) 0 6deg, transparent 6deg 18deg),
+    linear-gradient(180deg, var(--paper), var(--paper-3));
+}
+.art-6::after {
+  left: -10%; right: -10%; bottom: -6%; height: 38%;
+  background: var(--navy); transform: rotate(-6deg);
+}
