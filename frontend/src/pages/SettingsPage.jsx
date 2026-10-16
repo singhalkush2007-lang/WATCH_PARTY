@@ -80,21 +80,21 @@ export default function SettingsPage() {
                     <h2 className="display-3">Profile</h2>
                   </div>
                   <div className="profile-row">
-                    <span className="avatar profile-avatar">KS</span>
+                    <span className="avatar profile-avatar">DV</span>
                     <div className="profile-id">
-                      <span className="profile-name">Kush</span>
-                      <span className="muted">kush@example.com · member since Oct 2026</span>
+                      <span className="profile-name">DEV</span>
+                      <span className="muted">dev@example.com · member since Oct 2026</span>
                     </div>
                     <button className="btn btn-secondary btn-sm"><Camera /> Change photo</button>
                   </div>
                   <div className="settings-fields">
                     <div className="field">
                       <label htmlFor="display-name">Display name</label>
-                      <input id="display-name" type="text" className="input" defaultValue="Kush" />
+                      <input id="display-name" type="text" className="input" defaultValue="DEV" />
                     </div>
                     <div className="field">
                       <label htmlFor="email">Email</label>
-                      <input id="email" type="email" className="input" defaultValue="kush@example.com" />
+                      <input id="email" type="email" className="input" defaultValue="dev@example.com" />
                     </div>
                   </div>
                   <div className="field">

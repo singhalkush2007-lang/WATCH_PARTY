@@ -20,7 +20,7 @@ const PALETTE = [
 const TINTS = ['--navy-1000', '--navy-950', '--navy-900', '--navy-750', '--navy-600', '--slate-700', '--slate-300', '--copper-700', '--copper-300', '--copper-200', '--paper-2'];
 
 const SAMPLE_SEATS = [
-  { id: 'a', name: 'Kush', isYou: true },
+  { id: 'a', name: 'DEV', isYou: true },
   { id: 'b', name: 'Aarav', isHost: true },
   { id: 'c', name: 'Meera' },
   { id: 'd', name: 'Sana' },
@@ -105,7 +105,7 @@ export default function Styleguide() {
           <SectionHead number="04" caption="Forms" title="Quiet controls" />
           <div className="sg-grid-2">
             <div className="card card-pad sg-stack">
-              <div className="field"><label htmlFor="sg-name">Display name</label><input id="sg-name" className="input" defaultValue="Kush" /></div>
+              <div className="field"><label htmlFor="sg-name">Display name</label><input id="sg-name" className="input" defaultValue="DEV" /></div>
               <div className="field"><label htmlFor="sg-url">Video link</label><input id="sg-url" className="input" placeholder="Paste a YouTube or video link…" /><span className="field-hint">YouTube, Vimeo or any .mp4 link.</span></div>
               <div className="field"><label htmlFor="sg-quality">Default quality</label><select id="sg-quality" className="select"><option>Auto (up to 1080p)</option><option>720p</option></select></div>
               <div className="toggle-row"><span><strong>Auto-resync</strong><br /><span className="muted">Quietly correct drift over 2 seconds</span></span><Toggle checked={autoResync} onChange={setAutoResync} label="Auto-resync" /></div>
@@ -145,7 +145,7 @@ export default function Styleguide() {
               <div className="sg-row"><SyncIndicator state="synced" /><SyncIndicator state="syncing" /><SyncIndicator state="offline" /></div>
               <div className="sg-row"><span className="badge badge-live">Live</span><span className="badge">Poll</span><span className="badge badge-info">Intermission</span></div>
               <div className="sg-row">
-                <span className="avatar">AR</span><span className="avatar" style={{ background: 'var(--copper-300)', color: 'var(--ink)' }}>ME</span><span className="avatar" style={{ background: 'var(--slate-300)', color: 'var(--ink)' }}>KS<span className="presence" /></span>
+                <span className="avatar">AR</span><span className="avatar" style={{ background: 'var(--copper-300)', color: 'var(--ink)' }}>ME</span><span className="avatar" style={{ background: 'var(--slate-300)', color: 'var(--ink)' }}>DV<span className="presence" /></span>
               </div>
             </div>
           </div>

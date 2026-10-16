@@ -1,10 +1,22 @@
 const express = require('express');
 const http = require('http');
+const path = require('path');
 const { Server } = require('socket.io');
 const cors = require('cors');
 
 const app = express();
 app.use(cors());
+
+// Serve the built React app (made by `npm run build` into frontend/dist)
+const distPath = path.join(__dirname, '../frontend/dist');
+app.use(express.static(distPath));
+
+// Any other page (like /room/ABC123) gets index.html, so React Router can show it after a refresh.
+// Socket.IO's own /socket.io/ requests are left alone.
+app.get('/{*splat}', (req, res, next) => {
+  if (req.path.startsWith('/socket.io/')) return next();
+  res.sendFile(path.join(distPath, 'index.html'));
+});
 
 const server = http.createServer(app);
 const io = new Server(server, {
@@ -133,6 +145,8 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(3001, () => {
-  console.log('Backend running on http://localhost:3001');
+// Hosting services tell the app which port to use through PORT; locally it's 3001
+const PORT = process.env.PORT || 3001;
+server.listen(PORT, () => {
+  console.log(`Backend running on http://localhost:${PORT}`);
 });

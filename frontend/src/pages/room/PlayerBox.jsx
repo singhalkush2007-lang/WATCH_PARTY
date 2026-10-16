@@ -1,6 +1,6 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
-import { Crown, Play, Pause, Maximize, Minimize, Heart, Flame, Laugh, Zap, Sparkles, AlertTriangle } from 'lucide-react';
+import { Crown, Play, Pause, Maximize, Minimize, Heart, Flame, Laugh, Zap, Sparkles, AlertTriangle, Lock, Volume2, VolumeX } from 'lucide-react';
 
 const REACTION_ICONS = { heart: Heart, flame: Flame, smile: Laugh, shocked: Zap };
 
@@ -24,6 +24,29 @@ export default function PlayerBox({
   const timeRef = useRef(null);
   const durationRef = useRef(null);
   const [hasStarted, setHasStarted] = useState(false);
+  const [showLockHint, setShowLockHint] = useState(false);
+  const lockHintTimer = useRef(null);
+  const volumeBeforeMute = useRef(1);
+
+  useEffect(() => () => clearTimeout(lockHintTimer.current), []);
+
+  // Participants can't touch the video, so tell them why when they click it
+  const handleScreenClick = () => {
+    if (isHost) return;
+    setShowLockHint(true);
+    clearTimeout(lockHintTimer.current);
+    lockHintTimer.current = setTimeout(() => setShowLockHint(false), 2500);
+  };
+
+  // Everyone keeps their own volume (it isn't shared with the room)
+  const toggleMute = () => {
+    if (volume > 0) {
+      volumeBeforeMute.current = volume;
+      onVolumeChange(0);
+    } else {
+      onVolumeChange(volumeBeforeMute.current || 1);
+    }
+  };
 
   const handleTimeUpdate = (e) => {
     const { currentTime, duration } = e.currentTarget;
@@ -45,24 +68,34 @@ export default function PlayerBox({
 
   return (
     <div className="player" ref={playerBoxRef} data-playing={isPlaying}>
-      <div className="player-frame">
-        <ReactPlayer
-          ref={videoRef}
-          src={videoUrl || undefined}
-          controls
-          width="100%"
-          height="100%"
-          volume={volume}
-          onPlay={handlePlay}
-          onPause={onPause}
-          onSeeked={onSeeked}
-          onLoadedMetadata={onLoadedMetadata}
-          onTimeUpdate={handleTimeUpdate}
-          onDurationChange={handleDuration}
-          onError={onError}
-          onVolumeChange={(e) => onVolumeChange(e.currentTarget.volume)}
-          style={{ background: 'var(--navy-1000)', objectFit: 'contain' }}
-        />
+      <div className="player-frame" onClick={handleScreenClick} onDoubleClick={isHost ? undefined : onToggleFullscreen}>
+        {/* Only the host can click the video. For everyone else it's "inert":
+            clicks, taps and the keyboard can't reach YouTube's play/pause/seek. */}
+        <div className="player-media" inert={!isHost}>
+          <ReactPlayer
+            ref={videoRef}
+            src={videoUrl || undefined}
+            controls
+            width="100%"
+            height="100%"
+            volume={volume}
+            onPlay={handlePlay}
+            onPause={onPause}
+            onSeeked={onSeeked}
+            onLoadedMetadata={onLoadedMetadata}
+            onTimeUpdate={handleTimeUpdate}
+            onDurationChange={handleDuration}
+            onError={onError}
+            onVolumeChange={(e) => onVolumeChange(e.currentTarget.volume)}
+            style={{ background: 'var(--navy-1000)', objectFit: 'contain' }}
+          />
+        </div>
+
+        {showLockHint && (
+          <span className="lock-hint" role="status">
+            <Lock aria-hidden="true" /> Only {hostName} can play, pause or skip
+          </span>
+        )}
 
         {!videoUrl && (
           <div className="screen-state" role="status">
@@ -112,6 +145,22 @@ export default function PlayerBox({
             >
               {isPlaying ? <Pause fill="currentColor" /> : <Play fill="currentColor" />}
             </button>
+            <div className="volume">
+              <button className="icon-btn" onClick={toggleMute} aria-label={volume > 0 ? 'Mute' : 'Unmute'} title={volume > 0 ? 'Mute' : 'Unmute'}>
+                {volume > 0 ? <Volume2 /> : <VolumeX />}
+              </button>
+              <input
+                type="range"
+                className="volume-slider"
+                min="0"
+                max="1"
+                step="0.05"
+                value={volume}
+                onChange={(e) => onVolumeChange(Number(e.target.value))}
+                aria-label="Volume"
+                style={{ '--vol': `${volume * 100}%` }}
+              />
+            </div>
             <span className="time"><span ref={timeRef}>0:00</span> <span className="time-sep">/</span> <span ref={durationRef}>0:00</span></span>
           </div>
           <div className="control-group">

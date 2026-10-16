@@ -75,9 +75,9 @@ export default function DashboardLayout() {
 
         <div className="lobby-side-foot">
           <Link to="/settings" className="lobby-profile">
-            <span className="avatar tone-slate">KS</span>
+            <span className="avatar tone-slate">DV</span>
             <span className="lobby-profile-text">
-              <span className="lobby-profile-name">Kush</span>
+              <span className="lobby-profile-name">DEV</span>
               <span className="lobby-profile-sub">Profile & settings</span>
             </span>
             <Settings aria-hidden="true" />
