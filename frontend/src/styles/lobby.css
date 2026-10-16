@@ -68,7 +68,7 @@
 }
 .lobby-top-brand { display: none; }
 .lobby-search { max-width: 440px; }
-.lobby-search .input { min-height: 44px; border-radius: var(--r-pill); border-color: var(--line-strong); background: rgb(var(--deep-rgb) / 0.35); }
+.lobby-search .input { min-height: 44px; border-color: var(--line-strong); background: rgb(var(--deep-rgb) / 0.35); }
 .lobby-search .input:hover { border-color: var(--line-input); }
 .lobby-actions { display: flex; align-items: center; gap: 10px; }
 .lobby-content { flex: 1; min-height: 0; overflow-y: auto; padding: clamp(var(--sp-5), 3vw, var(--sp-7)) clamp(var(--sp-4), 3vw, var(--sp-7)) var(--sp-8); }
@@ -107,7 +107,7 @@
 .lobby-section { display: grid; gap: var(--sp-6); }
 .lobby-section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--sp-4); flex-wrap: wrap; }
 .ticket-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-5); }
-.ticket-live { display: inline-flex; align-items: center; gap: 8px; color: var(--copper-200); }
+.ticket-live { display: inline-flex; align-items: center; gap: 8px; color: var(--danger-text); }
 .ticket-film { font-size: 1.15em; color: var(--text-2); }
 
 /* ---------- My rooms / Friends ---------- */

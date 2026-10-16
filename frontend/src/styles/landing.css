@@ -35,7 +35,7 @@
 .land-hero-copy .lede { max-width: 46ch; }
 .land-cta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-4); }
 .land-join { display: flex; gap: var(--sp-2); }
-.land-join .input { width: 190px; min-height: 56px; padding: 0 20px; border-radius: var(--r-pill); font-size: 0.9375rem; letter-spacing: 0.16em; }
+.land-join .input { width: 190px; min-height: 56px; padding: 0 20px; font-size: 0.9375rem; letter-spacing: 0.16em; }
 .land-join .btn { min-height: 56px; }
 
 /* the screen, seats and ticket overlap like a composed still */
@@ -72,7 +72,7 @@
   color: transparent; -webkit-text-stroke: 1px rgb(var(--copper-rgb) / 0.7);
 }
 .act-body { display: grid; gap: var(--sp-3); max-width: 52ch; }
-.act-detail { grid-column: 2; justify-self: start; padding: 6px 14px; border-radius: var(--r-pill); border: 1px dashed rgb(var(--ww-rgb) / 0.18); font-size: 0.75rem; letter-spacing: 0.12em; color: var(--copper-200); }
+.act-detail { grid-column: 2; justify-self: start; padding: 6px 14px; border-radius: var(--r-1); border: 1px dashed rgb(var(--ww-rgb) / 0.18); font-size: 0.75rem; letter-spacing: 0.12em; color: var(--copper-200); }
 
 /* ---------- In the house ---------- */
 .house { max-width: 1440px; margin: 0 auto; padding: 0 var(--gutter) clamp(var(--sp-8), 10vw, var(--sp-10)); display: grid; gap: var(--sp-7); }
